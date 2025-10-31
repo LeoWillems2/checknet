@@ -1,2 +1,2 @@
 # checknet
-Checknet compares ufw against ss -ntlp and nmap
+Checknet compares ufw against ss -lntup and nmap
