@@ -1,18 +1,17 @@
 
-all: collectfwdata compare_fw_listeners nmapscanner
+all: execute/collectfwdata execute/compare_fw_listeners execute/nmapscanner
 
-collectfwdata: collectfwdata.go structs.go lib.go
-	go build collectfwdata.go structs.go lib.go
+execute/collectfwdata: cmd/collectfwdata/collectfwdata.go pkg/sharedlib/funcs.go
+	go build -o execute/collectfwdata cmd/collectfwdata/collectfwdata.go
 
-compare_fw_listeners: compare_fw_listeners.go structs.go lib.go
-	go build compare_fw_listeners.go structs.go lib.go
+execute/compare_fw_listeners: cmd/compare_fw_listeners/compare_fw_listeners.go pkg/sharedlib/funcs.go
+	go build -o execute/compare_fw_listeners cmd/compare_fw_listeners/compare_fw_listeners.go
 
-nmapscanner: nmapscanner.go structs.go lib.go
-	go build nmapscanner.go structs.go lib.go
+execute/nmapscanner: cmd/nmapscanner/nmapscanner.go pkg/sharedlib/funcs.go
+	go build -o execute/nmapscanner cmd/nmapscanner/nmapscanner.go
 
 run:
-	./collectfwdata
-	./compare_fw_listeners
+	(cd execute; ./collectfwdata; ./compare_fw_listeners)
 
 clean:
-	rm -f collectfwdata FWrulesByPort.json InterfacesByName.json ListenersByPort.json ListenersByRow.json nmapscanner
+	rm -f execute/*
