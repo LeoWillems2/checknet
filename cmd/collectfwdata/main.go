@@ -1,7 +1,7 @@
 package main
 
 import (
-    _ "github.com/LeoWillems2/checknet/pkg/sharedlib/v1"
+    _ "github.com/LeoWillems2/checknet/pkg/sharedlib"
 )
 
 func main() {
