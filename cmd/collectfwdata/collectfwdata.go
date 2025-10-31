@@ -6,7 +6,7 @@ package main
 		- on interface does not support in or out
 */
 
-import "github.com/LeoWillems2/checknet/pkg/sharedlib/v1"
+import "github.com/LeoWillems2/checknet/pkg/sharedlib/v2"
 
 func main() {
 	sharedlib.GetInterfaces(true)
